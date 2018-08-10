@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.charles.secondboot.dao.StaffMapper" >
+    <insert id="insertStaff">
+        insert into staff (staffName, entryTime, leaveTime, salary1, salary2, salary3, salary4, organizeId, organizeName, departmentName, departmentId, age) values (#{staffName}
+
+        ,#{entryTime},#{leaveTime},#{salary1},#{salary2},#{salary3},#{salary4},#{organizeId},#{departmentId},#{age})
+    </insert>
+
+    <delete id="deleteStaff">
+        delete from staff where staffid = #{staffid}
+    </delete>
+
+    <select id="selectStaffs" resultType="com.charles.secondboot.domain.entity.Staff">
+        select * from staff
+        WHERE 1 = 1
+        <if test="staffName != null and staffName != ''">AND staffName LIKE CONCAT('%', #{staffName}, '%')</if>
+    </select>
+</mapper>
